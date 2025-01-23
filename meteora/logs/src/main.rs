@@ -6,7 +6,7 @@ use carbon_core::error::{CarbonResult, Error as CarbonError};
 use carbon_log_metrics::LogMetrics;
 use carbon_rpc_logs_subscribe_datasource::{Filters, RpcLogsSubscribe};
 use processor::MeteoraLogsProcessor;
-use solana_client::rpc_config::RpcTransactionLogsConfig;
+use solana_client::rpc_config::{RpcTransactionLogsConfig, RpcTransactionLogsFilter};
 use solana_sdk::{commitment_config::CommitmentConfig, pubkey, pubkey::Pubkey};
 use std::{env, sync::Arc};
 use storage::Storage;
@@ -21,7 +21,7 @@ pub async fn main() -> CarbonResult<()> {
     let logs_subscribe = RpcLogsSubscribe::new(
         std::env::var("RPC_WS_URL").unwrap(),
         Filters::new(
-            vec![METEORA_PROGRAM_ID],
+            RpcTransactionLogsFilter::Mentions(vec![METEORA_PROGRAM_ID.to_string()]),
             RpcTransactionLogsConfig {
                 commitment: Some(CommitmentConfig::confirmed()),
             },
