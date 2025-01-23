@@ -1,0 +1,23 @@
+[package]
+name = "solytics-transactions"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-trait = "0.1.85"
+bincode = "1.3.3"
+carbon-core = "0.4.0"
+carbon-log-metrics = "0.4.0"
+carbon-meteora-dlmm-decoder = "0.4.0"
+carbon-rpc-transaction-crawler-datasource = "0.4.0"
+chrono = "0.4.39"
+dotenv = "0.15.0"
+env_logger = "0.11.6"
+log = "0.4.25"
+rocksdb = "0.23.0"
+serde = "1.0.217"
+solana-client = "2.1.10"
+solana-sdk = "2.1.10"
+thiserror = "2.0.11"
+tokio = "1.43.0"
+tokio-util = "0.7.13"
